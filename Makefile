@@ -11,5 +11,4 @@ lint:
 format:
 	black mylib/*.py *.py
 
-all:
-	install lint format
+all: install test lint format

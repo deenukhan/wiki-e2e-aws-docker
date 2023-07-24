@@ -8,11 +8,14 @@ import wikipedia as wiki
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+
 class Topic(BaseModel):
     """
     This class is used to validate the topic input
     """
+
     topic: str
+
 
 # create an instance of the FastAPI class
 app = FastAPI()
@@ -34,6 +37,7 @@ def get_summary(topic: Topic):
     """
     return wiki.summary(topic.topic)
 
+
 @app.post("/search")
 def search_wiki(topic: Topic):
     """
@@ -41,6 +45,7 @@ def search_wiki(topic: Topic):
     :param topic: the topic of the wikipedia page
     """
     return wiki.search(topic.topic)
+
 
 @app.post("/page")
 def get_page(topic: Topic):
